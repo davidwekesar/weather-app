@@ -8,6 +8,6 @@
     <fragment
         android:id="@+id/citiesListFragment"
         android:name="com.example.weatherapp.views.citieslist.CitiesListFragment"
-        android:label="CitiesListFragment"
+        android:label="@string/temperature"
         tools:layout="@layout/fragment_cities_list" />
 </navigation>
