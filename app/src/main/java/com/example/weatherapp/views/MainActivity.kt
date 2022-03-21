@@ -1,4 +1,4 @@
-package com.example.weatherapp
+package com.example.weatherapp.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.weatherapp.R
 import com.example.weatherapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
