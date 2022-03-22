@@ -2,4 +2,11 @@
     <string name="app_name">Weather App</string>
     <string name="temperature">Temperature</string>
     <string name="favorite">favorite</string>
+    <string name="current_weather">Current Weather</string>
+    <string name="wind">Wind</string>
+    <string name="humidity">Humidity</string>
+    <string name="visibility">Visibility</string>
+    <string name="pressure">Pressure</string>
+    <string name="dew_point">Dew point</string>
+    <string name="details">Details</string>
 </resources>

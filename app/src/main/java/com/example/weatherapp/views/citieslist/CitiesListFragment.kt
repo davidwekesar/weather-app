@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.weatherapp.databinding.FragmentCitiesListBinding
 import com.example.weatherapp.model.repositories.CitiesWeatherRepository
 import com.example.weatherapp.viewmodels.CitiesWeatherViewModel
@@ -30,11 +31,19 @@ class CitiesListFragment : Fragment() {
         _binding = FragmentCitiesListBinding.inflate(inflater, container, false)
 
         viewModel.citiesWeatherList.observe(viewLifecycleOwner) { citiesWeatherList ->
-            val adapter = CitiesListAdapter(citiesWeatherList)
+            val adapter = CitiesListAdapter(citiesWeatherList, LocationListener { locationKey ->
+                navigateToLocationDetailsFragment(locationKey)
+            })
             binding.citiesRecyclerView.adapter = adapter
         }
 
         return binding.root
+    }
+
+    private fun navigateToLocationDetailsFragment(locationKey: String) {
+        val action = CitiesListFragmentDirections
+            .actionCitiesListFragmentToLocationDetailsFragment(locationKey)
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {

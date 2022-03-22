@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -61,5 +62,6 @@ dependencies {
     implementation "com.jakewharton.timber:timber:$timber_version"
 
     // Fragment ktx
-    implementation "androidx.fragment:fragment-ktx:$fragment_ktx_version"
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+    debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
 }

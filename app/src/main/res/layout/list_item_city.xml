@@ -7,12 +7,15 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/default_medium"
         android:layout_marginTop="@dimen/default_small"
         android:layout_marginEnd="@dimen/default_medium"
         android:layout_marginBottom="@dimen/default_small"
+        android:clickable="true"
+        android:focusable="true"
         app:cardCornerRadius="@dimen/default_small"
         app:contentPadding="@dimen/default_medium">
 

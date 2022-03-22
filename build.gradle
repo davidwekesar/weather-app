@@ -2,6 +2,7 @@
 buildscript {
     dependencies {
         classpath "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.4.1"
     }
 }
 
@@ -16,7 +17,7 @@ ext {
     retrofit_version = "2.9.0"
     moshi_version = "1.13.0"
     timber_version = "5.0.1"
-    fragment_ktx_version = "1.4.1"
+    fragment_version = "1.4.1"
 }
 
 task clean(type: Delete) {

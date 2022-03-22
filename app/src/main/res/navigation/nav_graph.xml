@@ -9,5 +9,19 @@
         android:id="@+id/citiesListFragment"
         android:name="com.example.weatherapp.views.citieslist.CitiesListFragment"
         android:label="@string/temperature"
-        tools:layout="@layout/fragment_cities_list" />
+        tools:layout="@layout/fragment_cities_list" >
+        <action
+            android:id="@+id/action_citiesListFragment_to_locationDetailsFragment"
+            app:destination="@id/locationDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/locationDetailsFragment"
+        android:name="com.example.weatherapp.views.LocationDetailsFragment"
+        android:label="@string/details"
+        tools:layout="@layout/fragment_location_details">
+        <argument
+            android:name="locationKey"
+            app:argType="string" />
+    </fragment>
 </navigation>

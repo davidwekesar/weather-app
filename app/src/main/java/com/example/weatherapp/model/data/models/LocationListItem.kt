@@ -2,7 +2,7 @@ package com.example.weatherapp.model.data.models
 
 import com.squareup.moshi.Json
 
-data class CityWeather(
+data class LocationListItem(
     @Json(name = "Key")
     val locationKey: String,
 
@@ -26,10 +26,10 @@ data class Country(
 
 data class Temperature(
     @Json(name = "Metric")
-    val metric: Metric
+    val metric: MetricDouble
 )
 
-data class Metric(
+data class MetricDouble(
     @Json(name = "Value")
     val value: Double
 )

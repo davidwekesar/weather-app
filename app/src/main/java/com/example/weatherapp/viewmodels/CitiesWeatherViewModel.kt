@@ -1,7 +1,7 @@
 package com.example.weatherapp.viewmodels
 
 import androidx.lifecycle.*
-import com.example.weatherapp.model.data.models.CityWeather
+import com.example.weatherapp.model.data.models.LocationListItem
 import com.example.weatherapp.model.repositories.CitiesWeatherRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -9,8 +9,8 @@ import timber.log.Timber
 class CitiesWeatherViewModel(
     private val repository: CitiesWeatherRepository
 ) : ViewModel() {
-    private val _citiesWeatherList = MutableLiveData<List<CityWeather>>()
-    val citiesWeatherList: LiveData<List<CityWeather>> get() = _citiesWeatherList
+    private val _citiesWeatherList = MutableLiveData<List<LocationListItem>>()
+    val citiesWeatherList: LiveData<List<LocationListItem>> get() = _citiesWeatherList
 
     init {
         fetchCitiesWeatherList()
