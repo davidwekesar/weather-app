@@ -6,6 +6,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.databinding.ListItemCityBinding
 import com.example.weatherapp.model.data.models.CityWeather
+import com.example.weatherapp.utils.concatLocationName
+import com.example.weatherapp.utils.convertToDate
+import com.example.weatherapp.utils.convertToTime
+import com.example.weatherapp.utils.formatTempString
 
 class CitiesListAdapter(
     private val citiesWeatherList: List<CityWeather>
@@ -30,11 +34,17 @@ class CitiesListAdapter(
 
 class CityViewHolder(binding: ListItemCityBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    private val cityTV: TextView = binding.city
+    private val locationTV: TextView = binding.location
+    private val dateTV: TextView = binding.date
+    private val timeTV: TextView = binding.time
     private val temperatureTV: TextView = binding.temperature
 
     fun bind(cityWeather: CityWeather) {
-        cityTV.text = cityWeather.city
-        temperatureTV.text = cityWeather.temperature.metric.value.toString()
+        with(cityWeather) {
+            locationTV.text = concatLocationName(city, country.name)
+            temperatureTV.text = formatTempString(temperature.metric.value)
+            dateTV.text = convertToDate(epochTime)
+            timeTV.text = convertToTime(epochTime)
+        }
     }
 }

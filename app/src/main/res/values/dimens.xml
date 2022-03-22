@@ -2,4 +2,5 @@
 <resources>
     <dimen name="default_medium">16dp</dimen>
     <dimen name="default_small">8dp</dimen>
+    <dimen name="default_large">24dp</dimen>
 </resources>

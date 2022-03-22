@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Weather App</string>
     <string name="temperature">Temperature</string>
+    <string name="favorite">favorite</string>
 </resources>
