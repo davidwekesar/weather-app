@@ -31,18 +31,19 @@ class CitiesListFragment : Fragment() {
         _binding = FragmentCitiesListBinding.inflate(inflater, container, false)
 
         viewModel.citiesWeatherList.observe(viewLifecycleOwner) { citiesWeatherList ->
-            val adapter = CitiesListAdapter(citiesWeatherList, LocationListener { locationKey ->
-                navigateToLocationDetailsFragment(locationKey)
-            })
+            val adapter =
+                CitiesListAdapter(citiesWeatherList, LocationListener { locationKey, location ->
+                    navigateToLocationDetailsFragment(locationKey, location)
+                })
             binding.citiesRecyclerView.adapter = adapter
         }
 
         return binding.root
     }
 
-    private fun navigateToLocationDetailsFragment(locationKey: String) {
+    private fun navigateToLocationDetailsFragment(locationKey: String, location: String) {
         val action = CitiesListFragmentDirections
-            .actionCitiesListFragmentToLocationDetailsFragment(locationKey)
+            .actionCitiesListFragmentToLocationDetailsFragment(locationKey, location)
         findNavController().navigate(action)
     }
 

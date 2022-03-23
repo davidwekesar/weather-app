@@ -26,10 +26,10 @@ data class Country(
 
 data class Temperature(
     @Json(name = "Metric")
-    val metric: MetricDouble
+    val metric: Metric
 )
 
-data class MetricDouble(
+data class Metric(
     @Json(name = "Value")
     val value: Double
 )

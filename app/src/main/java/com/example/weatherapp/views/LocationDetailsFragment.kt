@@ -44,6 +44,7 @@ class LocationDetailsFragment : Fragment() {
     }
 
     private fun updateUI(locationData: LocationData) {
+        binding.location.text = args.location
         binding.date.text = convertToDate(locationData.epochTime)
         binding.time.text = convertToTime(locationData.epochTime)
         binding.weather.text = locationData.weatherText
@@ -67,8 +68,8 @@ class LocationDetailsFragment : Fragment() {
         return "${visibility.toInt()} km"
     }
 
-    private fun formatPressureString(pressure: Int): String {
-        return "$pressure mb"
+    private fun formatPressureString(pressure: Double): String {
+        return "${pressure.toInt()} mb"
     }
 
     override fun onDestroyView() {

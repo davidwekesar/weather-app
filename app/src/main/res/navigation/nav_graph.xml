@@ -18,10 +18,13 @@
     <fragment
         android:id="@+id/locationDetailsFragment"
         android:name="com.example.weatherapp.views.LocationDetailsFragment"
-        android:label="@string/details"
+        android:label="{location}"
         tools:layout="@layout/fragment_location_details">
         <argument
             android:name="locationKey"
+            app:argType="string" />
+        <argument
+            android:name="location"
             app:argType="string" />
     </fragment>
 </navigation>

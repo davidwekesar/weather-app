@@ -30,7 +30,7 @@ data class LocationData(
 
 data class DewPoint(
     @Json(name = "Metric")
-    val metric: MetricDouble
+    val metric: Metric
 )
 
 data class Wind(
@@ -40,20 +40,15 @@ data class Wind(
 
 data class Speed(
     @Json(name = "Metric")
-    val metric: MetricDouble
+    val metric: Metric
 )
 
 data class Visibility(
     @Json(name = "Metric")
-    val metric: MetricDouble
+    val metric: Metric
 )
 
 data class Pressure(
     @Json(name = "Metric")
-    val metric: MetricInt
-)
-
-data class MetricInt(
-    @Json(name = "Value")
-    val value: Int
+    val metric: Metric
 )

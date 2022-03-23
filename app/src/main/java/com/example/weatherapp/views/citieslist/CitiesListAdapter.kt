@@ -44,7 +44,12 @@ class CityViewHolder(binding: ListItemCityBinding) : RecyclerView.ViewHolder(bin
 
     fun bind(locationListItem: LocationListItem, clickListener: LocationListener) {
         with(locationListItem) {
-            cardView.setOnClickListener { clickListener.onClick(locationKey) }
+            cardView.setOnClickListener {
+                clickListener.onClick(
+                    locationKey,
+                    concatLocationName(city, country.name)
+                )
+            }
             locationTV.text = concatLocationName(city, country.name)
             temperatureTV.text = formatTempString(temperature.metric.value)
             dateTV.text = convertToDate(epochTime)
@@ -53,6 +58,6 @@ class CityViewHolder(binding: ListItemCityBinding) : RecyclerView.ViewHolder(bin
     }
 }
 
-class LocationListener(val clickListener: (locationKey: String) -> Unit) {
-    fun onClick(locationKey: String) = clickListener(locationKey)
+class LocationListener(val clickListener: (locationKey: String, location: String) -> Unit) {
+    fun onClick(locationKey: String, location: String) = clickListener(locationKey, location)
 }
