@@ -1,8 +1,8 @@
-package com.example.weatherapp.model.data.models
+package com.example.weatherapp.network.datatransferobjects
 
 import com.squareup.moshi.Json
 
-data class LocationData(
+data class NetworkLocationDetails(
     @Json(name = "EpochTime")
     val epochTime: Long,
 

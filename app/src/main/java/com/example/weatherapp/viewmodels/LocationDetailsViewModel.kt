@@ -1,18 +1,18 @@
 package com.example.weatherapp.viewmodels
 
 import androidx.lifecycle.*
-import com.example.weatherapp.model.data.models.LocationData
-import com.example.weatherapp.model.repositories.CitiesWeatherRepository
+import com.example.weatherapp.network.datatransferobjects.NetworkLocationDetails
+import com.example.weatherapp.repository.LocationsRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class LocationDetailsViewModel(
     private val locationKey: String,
-    private val repository: CitiesWeatherRepository
+    private val repository: LocationsRepository
 ) : ViewModel() {
 
-    private val _locationData = MutableLiveData<List<LocationData>>()
-    val locationData: LiveData<List<LocationData>> get() = _locationData
+    private val _locationData = MutableLiveData<List<NetworkLocationDetails>>()
+    val networkLocationDetails: LiveData<List<NetworkLocationDetails>> get() = _locationData
 
     init {
         fetchLocationWeatherData()
@@ -32,7 +32,7 @@ class LocationDetailsViewModel(
 
 class LocationDetailsViewModelFactory(
     private val locationKey: String,
-    private val repository: CitiesWeatherRepository
+    private val repository: LocationsRepository
 ): ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

@@ -18,6 +18,7 @@ ext {
     moshi_version = "1.13.0"
     timber_version = "5.0.1"
     fragment_version = "1.4.1"
+    room_version = "2.4.2"
 }
 
 task clean(type: Delete) {

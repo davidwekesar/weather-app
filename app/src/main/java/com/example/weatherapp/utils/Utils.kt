@@ -1,6 +1,5 @@
 package com.example.weatherapp.utils
 
-import com.example.weatherapp.model.data.models.Temperature
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -22,7 +21,6 @@ fun concatLocationName(city: String, country: String): String {
     return "$city, $country"
 }
 
-fun formatTempString(temperature: Double): String {
-    val tempAsInt = temperature.toInt()
-    return "$tempAsInt\u00B0"
+fun formatTempString(temperature: Int): String {
+    return "$temperature\u00B0"
 }
