@@ -35,6 +35,9 @@ android {
     buildFeatures {
         viewBinding true
     }
+    secrets {
+        propertiesFileName 'secrets.properties'
+    }
 }
 
 dependencies {
