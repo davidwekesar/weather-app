@@ -1,8 +1,10 @@
 package com.example.weatherapp.viewmodels
 
 import android.app.Application
+import android.text.Editable
 import androidx.lifecycle.*
 import com.example.weatherapp.database.getDatabase
+import com.example.weatherapp.domain.Location
 import com.example.weatherapp.repository.LocationsRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -13,16 +15,30 @@ class LocationsViewModel(
 
     private val repository = LocationsRepository(getDatabase(application))
 
-    val locations = repository.locations
+    private var _locations = MutableLiveData<List<Location>>()
+    val locations: LiveData<List<Location>> get() = _locations
 
     init {
         refreshDataFromRepository()
+    }
+
+    fun search(query: Editable?) {
+        viewModelScope.launch {
+            if (query.isNullOrBlank()) {
+                _locations.value = repository.getAllLocations()
+            } else {
+                repository.searchLocation("%$query%").let {
+                    _locations.value = it
+                }
+            }
+        }
     }
 
     private fun refreshDataFromRepository() {
         viewModelScope.launch {
             try {
                 repository.refreshLocationsList()
+                _locations.value = repository.getAllLocations()
                 Timber.d("fetchCitiesWeatherList:success")
             } catch (e: Exception) {
                 Timber.e(e, "fetchCitiesWeatherList:failure")

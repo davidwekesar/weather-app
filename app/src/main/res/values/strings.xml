@@ -8,4 +8,6 @@
     <string name="visibility">Visibility</string>
     <string name="pressure">Pressure</string>
     <string name="dew_point">Dew point</string>
+    <string name="search_title">Search</string>
+    <string name="location_hint">Location</string>
 </resources>

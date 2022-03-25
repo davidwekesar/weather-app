@@ -1,7 +1,5 @@
 package com.example.weatherapp.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
 import com.example.weatherapp.database.LocationsDatabase
 import com.example.weatherapp.database.asDomainModel
 import com.example.weatherapp.domain.Location
@@ -14,10 +12,11 @@ import timber.log.Timber
 
 class LocationsRepository(private val database: LocationsDatabase) {
 
-    val locations: LiveData<List<Location>> =
-        Transformations.map(database.locationDao.getLocations()) {
-            it.asDomainModel()
-        }
+    suspend fun getAllLocations(): List<Location> = database.locationDao.getAllLocations().asDomainModel()
+
+    suspend fun searchLocation(query: String): List<Location> =
+        database.locationDao.search(query).asDomainModel()
+
 
     suspend fun refreshLocationsList() {
         withContext(Dispatchers.IO) {

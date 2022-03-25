@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -28,6 +29,10 @@ class LocationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentLocationsBinding.inflate(inflater, container, false)
+
+        binding.searchEditText.addTextChangedListener { query ->
+            viewModel.search(query)
+        }
 
         viewModel.locations.observe(viewLifecycleOwner) { locations ->
             binding.progressBar.visibility = View.INVISIBLE
