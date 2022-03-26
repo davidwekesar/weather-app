@@ -36,9 +36,8 @@ class LocationsFragment : Fragment() {
 
         viewModel.locations.observe(viewLifecycleOwner) { locations ->
             binding.progressBar.visibility = View.INVISIBLE
-            Timber.d("getLocationsList:$locations")
             val adapter =
-                LocationAdapter(locations, LocationListener { locationKey, location ->
+                LocationAdapter(locations, viewModel, LocationListener { locationKey, location ->
                     navigateToLocationDetailsFragment(locationKey, location)
                 })
             binding.citiesRecyclerView.adapter = adapter

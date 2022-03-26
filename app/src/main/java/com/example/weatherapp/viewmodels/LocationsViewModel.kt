@@ -27,10 +27,21 @@ class LocationsViewModel(
             if (query.isNullOrBlank()) {
                 _locations.value = repository.getAllLocations()
             } else {
-                repository.searchLocation("%$query%").let {
-                    _locations.value = it
+                repository.searchLocation("%$query%").let { locations ->
+                    _locations.value = locations
                 }
             }
+        }
+    }
+
+    fun updateLocation(isFavorite: Boolean, locationKey: String) {
+        viewModelScope.launch {
+            repository.updateLocation(isFavorite = isFavorite, locationKey = locationKey)
+                .let { rows ->
+                    if (rows > 0) {
+                        _locations.value = repository.getAllLocations()
+                    }
+                }
         }
     }
 

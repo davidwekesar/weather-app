@@ -16,9 +16,8 @@ data class DatabaseLocation(
     var isFavorite: Boolean = false
 }
 
-
 fun List<DatabaseLocation>.asDomainModel(): List<Location> {
-    return map {location ->
+    return map { location ->
         with(location) {
             Location(
                 locationKey = locationKey,

@@ -6,5 +6,5 @@ data class Location(
     val country: String,
     val epochTime: Long,
     val temperature: Int,
-    val isFavorite: Boolean
+    var isFavorite: Boolean
 )

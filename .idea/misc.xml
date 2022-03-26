@@ -8,7 +8,7 @@
         <entry key="app/src/main/res/layout/fragment_location_details.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_locations.xml" value="0.33" />
         <entry key="app/src/main/res/layout/list_item_city.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/list_item_location.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/list_item_location.xml" value="0.5" />
         <entry key="app/src/main/res/menu/options_menu.xml" value="0.19635416666666666" />
       </map>
     </option>
