@@ -14,5 +14,8 @@ interface LocationDao {
     fun insertAll(locations: List<DatabaseLocation>)
 
     @Query("UPDATE DatabaseLocation SET isFavorite = :isFavorite WHERE locationKey = :locationKey")
-    suspend fun update(isFavorite: Boolean, locationKey: String): Int
+    suspend fun updateLocation(isFavorite: Boolean, locationKey: String): Int
+
+    @Update(entity = DatabaseLocation::class)
+    suspend fun updateList(locations: List<SubDatabaseLocation>)
 }

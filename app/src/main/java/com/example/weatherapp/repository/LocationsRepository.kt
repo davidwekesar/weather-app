@@ -1,12 +1,12 @@
 package com.example.weatherapp.repository
 
-import com.example.weatherapp.database.DatabaseLocation
 import com.example.weatherapp.database.LocationsDatabase
 import com.example.weatherapp.database.asDomainModel
 import com.example.weatherapp.domain.Location
 import com.example.weatherapp.network.datatransferobjects.NetworkLocationDetails
 import com.example.weatherapp.network.AccuWeather
 import com.example.weatherapp.network.datatransferobjects.asDatabaseModel
+import com.example.weatherapp.network.datatransferobjects.asSubDatabaseModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import timber.log.Timber
@@ -23,8 +23,13 @@ class LocationsRepository(private val database: LocationsDatabase) {
         withContext(Dispatchers.IO) {
             val locations = AccuWeather.accuWeatherService.fetchLocationsList()
             Timber.d("refreshLocationsList: Success!")
-            Timber.d("Locations: $locations")
-            database.locationDao.insertAll(locations.asDatabaseModel())
+            if (database.locationDao.getAllLocations().isNotEmpty()) {
+                Timber.d("refreshLocationList: Update")
+                database.locationDao.updateList(locations.asSubDatabaseModel())
+            } else {
+                Timber.d("refreshLocationList: Refresh")
+                database.locationDao.insertAll(locations.asDatabaseModel())
+            }
         }
     }
 
@@ -32,5 +37,5 @@ class LocationsRepository(private val database: LocationsDatabase) {
         AccuWeather.accuWeatherService.fetchLocationData(locationKey)
 
     suspend fun updateLocation(isFavorite: Boolean, locationKey: String): Int =
-        database.locationDao.update(isFavorite, locationKey)
+        database.locationDao.updateLocation(isFavorite, locationKey)
 }

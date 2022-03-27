@@ -20,6 +20,7 @@ ext {
     timber_version = "5.0.1"
     fragment_version = "1.4.1"
     room_version = "2.4.2"
+    work_version = "2.7.1"
 }
 
 task clean(type: Delete) {

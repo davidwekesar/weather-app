@@ -1,6 +1,7 @@
 package com.example.weatherapp.network.datatransferobjects
 
 import com.example.weatherapp.database.DatabaseLocation
+import com.example.weatherapp.database.SubDatabaseLocation
 import com.squareup.moshi.Json
 
 data class Location(
@@ -39,6 +40,20 @@ fun List<Location>.asDatabaseModel(): List<DatabaseLocation> {
     return map { location ->
         with(location) {
             DatabaseLocation(
+                locationKey = locationKey,
+                city = city,
+                country = country.name,
+                epochTime = epochTime,
+                temperature = temperature.metric.value.toInt()
+            )
+        }
+    }
+}
+
+fun List<Location>.asSubDatabaseModel(): List<SubDatabaseLocation> {
+    return map { location ->
+        with(location) {
+            SubDatabaseLocation(
                 locationKey = locationKey,
                 city = city,
                 country = country.name,

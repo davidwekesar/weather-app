@@ -3,6 +3,7 @@ package com.example.weatherapp.viewmodels
 import android.app.Application
 import android.text.Editable
 import androidx.lifecycle.*
+import androidx.work.WorkInfo
 import com.example.weatherapp.database.getDatabase
 import com.example.weatherapp.domain.Location
 import com.example.weatherapp.repository.LocationsRepository
@@ -19,7 +20,7 @@ class LocationsViewModel(
     val locations: LiveData<List<Location>> get() = _locations
 
     init {
-        refreshDataFromRepository()
+        getAllLocations()
     }
 
     fun search(query: Editable?) {
@@ -45,14 +46,18 @@ class LocationsViewModel(
         }
     }
 
-    private fun refreshDataFromRepository() {
+    private fun getAllLocations() {
         viewModelScope.launch {
             try {
-                repository.refreshLocationsList()
-                _locations.value = repository.getAllLocations()
-                Timber.d("fetchCitiesWeatherList:success")
+                _locations.value = if (repository.getAllLocations().isNullOrEmpty()) {
+                    repository.refreshLocationsList()
+                    repository.getAllLocations()
+                } else {
+                    repository.getAllLocations()
+                }
+                Timber.d("fetchAllLocations:success")
             } catch (e: Exception) {
-                Timber.e(e, "fetchCitiesWeatherList:failure")
+                Timber.e(e, "fetchAllLocations:failure")
             }
         }
     }

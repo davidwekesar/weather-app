@@ -16,6 +16,14 @@ data class DatabaseLocation(
     var isFavorite: Boolean = false
 }
 
+data class SubDatabaseLocation(
+    val locationKey: String,
+    val city: String,
+    val country: String,
+    val epochTime: Long,
+    val temperature: Int
+)
+
 fun List<DatabaseLocation>.asDomainModel(): List<Location> {
     return map { location ->
         with(location) {
