@@ -22,10 +22,10 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface AccuWeatherService {
-    @GET("currentconditions/v1/topcities/50?apikey=${BuildConfig.apiKey}")
+    @GET("currentconditions/v1/topcities/50?apikey=${BuildConfig.API_KEY}")
     suspend fun fetchLocationsList(): List<NetworkLocation>
 
-    @GET("currentconditions/v1/{locationKey}?apikey=${BuildConfig.apiKey}&details=true")
+    @GET("currentconditions/v1/{locationKey}?apikey=${BuildConfig.API_KEY}&details=true")
     suspend fun fetchLocationData(@Path("locationKey") locationKey: String): List<NetworkLocationDetails>
 }
 
