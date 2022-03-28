@@ -4,7 +4,7 @@ import com.example.weatherapp.database.DatabaseLocation
 import com.example.weatherapp.database.SubDatabaseLocation
 import com.squareup.moshi.Json
 
-data class Location(
+data class NetworkLocation(
     @Json(name = "Key")
     val locationKey: String,
 
@@ -16,6 +16,12 @@ data class Location(
 
     @Json(name = "EpochTime")
     val epochTime: Long,
+
+    @Json(name = "WeatherText")
+    val weatherText: String,
+
+    @Json(name = "WeatherIcon")
+    val weatherIcon: Int?,
 
     @Json(name = "Temperature")
     val temperature: Temperature
@@ -36,28 +42,32 @@ data class Metric(
     val value: Double
 )
 
-fun List<Location>.asDatabaseModel(): List<DatabaseLocation> {
-    return map { location ->
-        with(location) {
+fun List<NetworkLocation>.asDatabaseModel(): List<DatabaseLocation> {
+    return map { networkLocation ->
+        with(networkLocation) {
             DatabaseLocation(
                 locationKey = locationKey,
                 city = city,
                 country = country.name,
                 epochTime = epochTime,
+                weatherText = weatherText,
+                weatherIcon = weatherIcon,
                 temperature = temperature.metric.value.toInt()
             )
         }
     }
 }
 
-fun List<Location>.asSubDatabaseModel(): List<SubDatabaseLocation> {
-    return map { location ->
-        with(location) {
+fun List<NetworkLocation>.asSubDatabaseModel(): List<SubDatabaseLocation> {
+    return map { networkLocation ->
+        with(networkLocation) {
             SubDatabaseLocation(
                 locationKey = locationKey,
                 city = city,
                 country = country.name,
                 epochTime = epochTime,
+                weatherText = weatherText,
+                weatherIcon = weatherIcon,
                 temperature = temperature.metric.value.toInt()
             )
         }

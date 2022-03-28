@@ -2,7 +2,7 @@ package com.example.weatherapp.network
 
 import com.example.weatherapp.BuildConfig
 import com.example.weatherapp.network.datatransferobjects.NetworkLocationDetails
-import com.example.weatherapp.network.datatransferobjects.Location
+import com.example.weatherapp.network.datatransferobjects.NetworkLocation
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -23,7 +23,7 @@ private val retrofit = Retrofit.Builder()
 
 interface AccuWeatherService {
     @GET("currentconditions/v1/topcities/50?apikey=${BuildConfig.apiKey}")
-    suspend fun fetchLocationsList(): List<Location>
+    suspend fun fetchLocationsList(): List<NetworkLocation>
 
     @GET("currentconditions/v1/{locationKey}?apikey=${BuildConfig.apiKey}&details=true")
     suspend fun fetchLocationData(@Path("locationKey") locationKey: String): List<NetworkLocationDetails>

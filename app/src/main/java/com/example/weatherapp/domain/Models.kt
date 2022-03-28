@@ -5,6 +5,8 @@ data class Location(
     val city: String,
     val country: String,
     val epochTime: Long,
+    val weatherText: String,
+    val weatherIcon: Int?,
     val temperature: Int,
     var isFavorite: Boolean
 )

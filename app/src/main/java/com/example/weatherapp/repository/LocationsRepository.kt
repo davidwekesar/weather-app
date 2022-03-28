@@ -33,6 +33,14 @@ class LocationsRepository(private val database: LocationsDatabase) {
         }
     }
 
+    suspend fun getFavoriteLocation(): Location {
+        return if (database.locationDao.getFavoriteLocation() != null) {
+            database.locationDao.getFavoriteLocation()!!.asDomainModel()
+        } else {
+            database.locationDao.getLocation().asDomainModel()
+        }
+    }
+
     suspend fun fetchLocationWeatherData(locationKey: String): List<NetworkLocationDetails> =
         AccuWeather.accuWeatherService.fetchLocationData(locationKey)
 

@@ -11,6 +11,8 @@ data class DatabaseLocation(
     val city: String,
     val country: String,
     val epochTime: Long,
+    val weatherText: String,
+    val weatherIcon: Int?,
     val temperature: Int
 ) {
     var isFavorite: Boolean = false
@@ -21,6 +23,8 @@ data class SubDatabaseLocation(
     val city: String,
     val country: String,
     val epochTime: Long,
+    val weatherText: String,
+    val weatherIcon: Int?,
     val temperature: Int
 )
 
@@ -32,9 +36,26 @@ fun List<DatabaseLocation>.asDomainModel(): List<Location> {
                 city = city,
                 country = country,
                 epochTime = epochTime,
+                weatherText = weatherText,
+                weatherIcon = weatherIcon,
                 temperature = temperature,
                 isFavorite = isFavorite
             )
         }
+    }
+}
+
+fun DatabaseLocation.asDomainModel(): Location {
+    return with(this) {
+        Location(
+            locationKey = locationKey,
+            city = city,
+            country = country,
+            epochTime = epochTime,
+            weatherText = weatherText,
+            weatherIcon = weatherIcon,
+            temperature = temperature,
+            isFavorite = isFavorite
+        )
     }
 }
