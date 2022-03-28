@@ -4,12 +4,22 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/gradient_drawable.xml" value="0.1675" />
+        <entry key="app/src/main/res/drawable/ic_clear_night_140.xml" value="0.1675" />
+        <entry key="app/src/main/res/drawable/ic_cloudy_160.xml" value="0.204" />
         <entry key="app/src/main/res/drawable/ic_favorite_24.xml" value="0.195" />
         <entry key="app/src/main/res/drawable/ic_favorite_border_24.xml" value="0.195" />
+        <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1675" />
+        <entry key="app/src/main/res/drawable/ic_partly_cloudy_with_showers_140.xml" value="0.1675" />
+        <entry key="app/src/main/res/drawable/ic_round_date_18.xml" value="0.204" />
+        <entry key="app/src/main/res/drawable/ic_round_time_18.xml" value="0.204" />
+        <entry key="app/src/main/res/drawable/ic_sunny_140.xml" value="0.1675" />
+        <entry key="app/src/main/res/drawable/ic_sunny_96.xml" value="0.204" />
+        <entry key="app/src/main/res/drawable/ic_thunderstorm_140.xml" value="0.1675" />
+        <entry key="app/src/main/res/font/quicksand_light.xml" value="0.2265625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18229166666666666" />
         <entry key="app/src/main/res/layout/fragment_cities_list.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/fragment_location_details.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/fragment_locations.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_location_details.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_locations.xml" value="0.22" />
         <entry key="app/src/main/res/layout/list_item_city.xml" value="0.22" />
         <entry key="app/src/main/res/layout/list_item_location.xml" value="0.5" />
         <entry key="app/src/main/res/menu/options_menu.xml" value="0.19635416666666666" />

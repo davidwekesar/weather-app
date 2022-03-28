@@ -9,6 +9,9 @@ data class NetworkLocationDetails(
     @Json(name = "WeatherText")
     val weatherText: String,
 
+    @Json(name = "WeatherIcon")
+    val weatherIcon: Int?,
+
     @Json(name = "Temperature")
     val temperature: Temperature,
 

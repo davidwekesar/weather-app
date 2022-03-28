@@ -1,20 +1,16 @@
 package com.example.weatherapp.ui.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.R
 import com.example.weatherapp.databinding.ListItemLocationBinding
 import com.example.weatherapp.domain.Location
-import com.example.weatherapp.utils.concatLocationName
-import com.example.weatherapp.utils.convertToDate
-import com.example.weatherapp.utils.convertToTime
-import com.example.weatherapp.utils.formatTempString
+import com.example.weatherapp.utils.*
 import com.example.weatherapp.viewmodels.LocationsViewModel
 
 class LocationAdapter(
@@ -64,11 +60,12 @@ class LocationAdapter(
 class LocationViewHolder(binding: ListItemLocationBinding) : RecyclerView.ViewHolder(binding.root) {
 
     private val cardView: CardView = binding.cardView
-    private val locationTV: TextView = binding.location
+    private val cityTV: TextView = binding.city
+    private val countryTV: TextView = binding.country
     private val dateTV: TextView = binding.date
     private val timeTV: TextView = binding.time
     private val temperatureTV: TextView = binding.temperature
-    private val isFavoriteTV: TextView = binding.isFavorite
+    private val weatherImageView: ImageView = binding.weatherIcon
     val favoriteButton: ImageButton = binding.favoriteButton
 
     fun bind(location: Location, clickListener: LocationListener) {
@@ -79,11 +76,12 @@ class LocationViewHolder(binding: ListItemLocationBinding) : RecyclerView.ViewHo
                     concatLocationName(city, country)
                 )
             }
-            locationTV.text = concatLocationName(city, country)
+            cityTV.text = city
+            countryTV.text = country
             temperatureTV.text = formatTempString(temperature)
             dateTV.text = convertToDate(epochTime)
             timeTV.text = convertToTime(epochTime)
-            isFavoriteTV.text = isFavorite.toString()
+            weatherImageView.setImageResource(getIconResource(weatherIcon))
         }
     }
 }

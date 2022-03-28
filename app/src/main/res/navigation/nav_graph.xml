@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/citiesListFragment"
         android:name="com.example.weatherapp.ui.LocationsFragment"
-        android:label="@string/temperature"
+        android:label="@string/weather"
         tools:layout="@layout/fragment_locations" >
         <action
             android:id="@+id/action_citiesListFragment_to_locationDetailsFragment"
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/locationDetailsFragment"
         android:name="com.example.weatherapp.ui.LocationDetailsFragment"
-        android:label="{location}"
+        android:label=""
         tools:layout="@layout/fragment_location_details">
         <argument
             android:name="locationKey"

@@ -3,6 +3,7 @@
     <string name="temperature">Temperature</string>
     <string name="favorite">favorite</string>
     <string name="current_weather">Current Weather</string>
+    <string name="weather">Weather</string>
     <string name="wind">Wind</string>
     <string name="humidity">Humidity</string>
     <string name="visibility">Visibility</string>

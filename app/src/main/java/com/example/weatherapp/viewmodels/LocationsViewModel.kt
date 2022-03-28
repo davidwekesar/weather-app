@@ -23,7 +23,7 @@ class LocationsViewModel(
         getAllLocations()
     }
 
-    fun search(query: Editable?) {
+    fun search(query: String?) {
         viewModelScope.launch {
             if (query.isNullOrBlank()) {
                 _locations.value = repository.getAllLocations()
