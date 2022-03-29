@@ -32,11 +32,12 @@
         <entry key="app/src/main/res/drawable/ic_sunny_96.xml" value="0.204" />
         <entry key="app/src/main/res/drawable/ic_thunderstorm_140.xml" value="0.1675" />
         <entry key="app/src/main/res/drawable/ic_windy_140.xml" value="0.1675" />
+        <entry key="app/src/main/res/drawable/scrollbar_thumb.xml" value="0.195" />
         <entry key="app/src/main/res/font/quicksand_light.xml" value="0.2265625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18229166666666666" />
         <entry key="app/src/main/res/layout/fragment_cities_list.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/fragment_location_details.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/fragment_locations.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_location_details.xml" value="0.19635416666666666" />
+        <entry key="app/src/main/res/layout/fragment_locations.xml" value="0.33" />
         <entry key="app/src/main/res/layout/list_item_city.xml" value="0.22" />
         <entry key="app/src/main/res/layout/list_item_location.xml" value="0.5" />
         <entry key="app/src/main/res/menu/options_menu.xml" value="0.19635416666666666" />

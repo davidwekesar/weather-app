@@ -15,4 +15,8 @@
     <string name="weather_notification_channel_name" translatable="false">Weather</string>
     <string name="notification_title">%1$d°C in %2$s</string>
     <string name="temperature_format">%1$d°</string>
+    <string name="details">Details</string>
+    <string name="date">date</string>
+    <string name="time">time</string>
+    <string name="weather_icon">Weather Icon</string>
 </resources>
