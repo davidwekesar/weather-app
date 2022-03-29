@@ -5,16 +5,33 @@
       <map>
         <entry key="app/src/main/res/drawable/gradient_drawable.xml" value="0.1675" />
         <entry key="app/src/main/res/drawable/ic_clear_night_140.xml" value="0.1675" />
+        <entry key="app/src/main/res/drawable/ic_cloudy_140.xml" value="0.204" />
         <entry key="app/src/main/res/drawable/ic_cloudy_160.xml" value="0.204" />
+        <entry key="app/src/main/res/drawable/ic_cloudy_day_storm_140.xml" value="0.1675" />
+        <entry key="app/src/main/res/drawable/ic_cloudy_night_140.xml" value="0.1675" />
+        <entry key="app/src/main/res/drawable/ic_cloudy_night_showers_140.xml" value="0.1675" />
+        <entry key="app/src/main/res/drawable/ic_cloudy_night_storm_140.xml" value="0.1675" />
+        <entry key="app/src/main/res/drawable/ic_cold_140.xml" value="0.1675" />
+        <entry key="app/src/main/res/drawable/ic_day_cloudy_snow_140.xml" value="0.204" />
         <entry key="app/src/main/res/drawable/ic_favorite_24.xml" value="0.195" />
         <entry key="app/src/main/res/drawable/ic_favorite_border_24.xml" value="0.195" />
+        <entry key="app/src/main/res/drawable/ic_fog_140.xml" value="0.1675" />
+        <entry key="app/src/main/res/drawable/ic_hazy_moonlight_140.xml" value="0.1675" />
+        <entry key="app/src/main/res/drawable/ic_hazy_sunshine_140.xml" value="0.1675" />
+        <entry key="app/src/main/res/drawable/ic_hot_140.xml" value="0.1675" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1675" />
         <entry key="app/src/main/res/drawable/ic_partly_cloudy_with_showers_140.xml" value="0.1675" />
+        <entry key="app/src/main/res/drawable/ic_partly_sunny_showers_140.xml" value="0.1675" />
+        <entry key="app/src/main/res/drawable/ic_rain_140.xml" value="0.1675" />
+        <entry key="app/src/main/res/drawable/ic_rain_snow_140.xml" value="0.1675" />
         <entry key="app/src/main/res/drawable/ic_round_date_18.xml" value="0.204" />
         <entry key="app/src/main/res/drawable/ic_round_time_18.xml" value="0.204" />
+        <entry key="app/src/main/res/drawable/ic_snow_140.xml" value="0.1675" />
+        <entry key="app/src/main/res/drawable/ic_snowy_night_140.xml" value="0.1675" />
         <entry key="app/src/main/res/drawable/ic_sunny_140.xml" value="0.1675" />
         <entry key="app/src/main/res/drawable/ic_sunny_96.xml" value="0.204" />
         <entry key="app/src/main/res/drawable/ic_thunderstorm_140.xml" value="0.1675" />
+        <entry key="app/src/main/res/drawable/ic_windy_140.xml" value="0.1675" />
         <entry key="app/src/main/res/font/quicksand_light.xml" value="0.2265625" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18229166666666666" />
         <entry key="app/src/main/res/layout/fragment_cities_list.xml" value="0.22" />

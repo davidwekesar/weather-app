@@ -90,7 +90,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/location"
-            tools:src="@drawable/ic_cloudy_140" />
+            tools:src="@drawable/ic_partly_sunny_140" />
 
         <TextView
             android:id="@+id/textView7"
