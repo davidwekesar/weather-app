@@ -16,10 +16,14 @@ A weather application that displays the current weather.
   * [Room](https://github.com/square/moshi) - for persisting data locally.
   * [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) - for managing background threads with simplified code and reducing needs for callbacks.
   * [Timber](https://github.com/JakeWharton/timber) - a logging library for Android
+  * [Ktlint](https://github.com/JakeWharton/timber) - a static code analysis tool that is used to analyze the Kotlin code.
  * API
    * Uses [AccuWeather APIs](https://developer.accuweather.com/) to get weather data.
  ## Download
  Go to the [Releases](https://github.com/davidwekesar/weather-app/releases) to download the latest APK.
+ ## Attribution
+ * [Yorlmar Campos](https://iconstore.co/author/yorlmar-campos) - for icons.
+ * [Adin Yanuar](https://dribbble.com/adinyanuar7) - for UI designs.
 
 ## Screenshots
 <div>
