@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/citiesListFragment">
+    app:startDestination="@id/locationsFragment">
 
     <fragment
-        android:id="@+id/citiesListFragment"
+        android:id="@+id/locationsFragment"
         android:name="com.example.weatherapp.ui.LocationsFragment"
         android:label="@string/weather"
         tools:layout="@layout/fragment_locations">
         <action
-            android:id="@+id/action_citiesListFragment_to_locationDetailsFragment"
+            android:id="@+id/action_locationsFragment_to_locationDetailsFragment"
             app:destination="@id/locationDetailsFragment" />
     </fragment>
 
@@ -24,7 +24,10 @@
             android:name="locationKey"
             app:argType="string" />
         <argument
-            android:name="location"
+            android:name="city"
+            app:argType="string" />
+        <argument
+            android:name="country"
             app:argType="string" />
     </fragment>
 </navigation>

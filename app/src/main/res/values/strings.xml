@@ -13,6 +13,7 @@
     <string name="location_hint">Location</string>
     <string name="weather_notification_channel_id" translatable="false">weather_channel</string>
     <string name="weather_notification_channel_name" translatable="false">Weather</string>
+    <string name="location_name_format">%1$s, %2$s</string>
     <string name="notification_title">%1$d°C in %2$s</string>
     <string name="temperature_format">%1$d°</string>
     <string name="alt_temperature_format">%1$d° C</string>

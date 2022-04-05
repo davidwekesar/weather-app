@@ -33,7 +33,7 @@
             android:layout_marginBottom="@dimen/default_small"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="@{() -> locationListener.onClick(location.locationKey, location.city)}"
+            android:onClick="@{() -> locationListener.onClick(location.locationKey, location.city, location.country)}"
             app:cardCornerRadius="@dimen/default_small"
             app:contentPadding="@dimen/default_medium">
 

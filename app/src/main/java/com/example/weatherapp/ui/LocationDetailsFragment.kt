@@ -36,7 +36,8 @@ class LocationDetailsFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
-        binding.city = args.location
+        binding.city = args.city
+        binding.country = args.country
 
         viewModel.locationDetails.observe(viewLifecycleOwner) { locationDetailsList ->
             binding.loadingState.visibility = View.INVISIBLE

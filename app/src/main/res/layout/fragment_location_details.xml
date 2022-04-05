@@ -8,6 +8,10 @@
         <variable
             name="city"
             type="String" />
+        
+        <variable
+            name="country"
+            type="String" />
 
         <variable
             name="locationDetails"
@@ -28,13 +32,13 @@
             app:layout_constraintGuide_percent="0.5" />
 
         <TextView
-            android:id="@+id/location"
+            android:id="@+id/locationName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:textColor="?attr/colorPrimaryVariant"
             android:textStyle="bold"
-            android:text="@{city}"
+            android:text="@{@string/location_name_format(city, country)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -48,7 +52,7 @@
             app:srcCompat="@{locationDetails.weatherIcon}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/location"
+            app:layout_constraintTop_toBottomOf="@+id/locationName"
             tools:src="@drawable/ic_partly_sunny_140" />
 
         <TextView

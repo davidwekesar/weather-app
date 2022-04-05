@@ -41,10 +41,13 @@ class LocationsFragment : Fragment() {
 
         viewModel.locations.observe(viewLifecycleOwner) { locations: List<Location> ->
             binding.progressBar.visibility = View.INVISIBLE
-            val adapter =
-                LocationAdapter(locations, viewModel, LocationListener { locationKey, location ->
-                    navigateToLocationDetailsFragment(locationKey, location)
-                })
+            val adapter = LocationAdapter(
+                locations,
+                viewModel,
+                LocationListener { locationKey, city, country ->
+                    navigateToLocationDetailsFragment(locationKey, city, country)
+                }
+            )
             binding.citiesRecyclerView.adapter = adapter
         }
 
@@ -77,9 +80,13 @@ class LocationsFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-    private fun navigateToLocationDetailsFragment(locationKey: String, location: String) {
+    private fun navigateToLocationDetailsFragment(
+        locationKey: String,
+        city: String,
+        country: String
+    ) {
         val action = LocationsFragmentDirections
-            .actionCitiesListFragmentToLocationDetailsFragment(locationKey, location)
+            .actionLocationsFragmentToLocationDetailsFragment(locationKey, city, country)
         findNavController().navigate(action)
     }
 

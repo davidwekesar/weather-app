@@ -40,6 +40,6 @@ class LocationViewHolder(private val binding: ListItemLocationBinding) :
     }
 }
 
-class LocationListener(val clickListener: (locationKey: String, location: String) -> Unit) {
-    fun onClick(locationKey: String, location: String) = clickListener(locationKey, location)
+class LocationListener(val clickListener: (locationKey: String, city: String, country: String) -> Unit) {
+    fun onClick(locationKey: String, city: String, country: String) = clickListener(locationKey, city, country)
 }

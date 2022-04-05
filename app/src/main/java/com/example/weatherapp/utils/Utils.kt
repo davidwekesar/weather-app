@@ -18,14 +18,6 @@ fun convertToTime(epochTime: Long): String {
     return simpleDateFormat.format(date)
 }
 
-fun concatLocationName(city: String, country: String): String {
-    return "$city, $country"
-}
-
-fun formatTempString(temperature: Int): String {
-    return "$temperature\u00B0"
-}
-
 fun getWeatherImageResource(weatherIcon: Int?): Int {
     return if (weatherIcon != null) {
         when(weatherIcon) {
