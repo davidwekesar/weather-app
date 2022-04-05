@@ -37,7 +37,8 @@ class LocationsViewModel(
 
     fun updateLocation(isFavorite: Boolean, locationKey: String) {
         viewModelScope.launch {
-            repository.updateLocation(isFavorite = isFavorite, locationKey = locationKey)
+            val newFavoriteValue = !isFavorite
+            repository.updateLocation(isFavorite = newFavoriteValue, locationKey = locationKey)
                 .let { rows ->
                     if (rows > 0) {
                         _locations.value = repository.getAllLocations()

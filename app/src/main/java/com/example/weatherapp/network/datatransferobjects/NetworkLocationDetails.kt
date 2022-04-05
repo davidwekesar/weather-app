@@ -1,5 +1,6 @@
 package com.example.weatherapp.network.datatransferobjects
 
+import com.example.weatherapp.domain.LocationDetails
 import com.squareup.moshi.Json
 
 data class NetworkLocationDetails(
@@ -55,3 +56,21 @@ data class Pressure(
     @Json(name = "Metric")
     val metric: Metric
 )
+
+fun List<NetworkLocationDetails>.asDomainModel(): List<LocationDetails> {
+    return map { networkLocationDetails ->
+        with(networkLocationDetails) {
+            LocationDetails(
+                epochTime = epochTime,
+                weatherText = weatherText,
+                weatherIcon = weatherIcon,
+                temperature = temperature.metric.value.toInt(),
+                humidity = humidity,
+                dewPoint = dewPoint.metric.value.toInt(),
+                wind = wind.speed.metric.value.toInt(),
+                visibility = visibility.metric.value.toInt(),
+                pressure = pressure.metric.value.toInt()
+            )
+        }
+    }
+}

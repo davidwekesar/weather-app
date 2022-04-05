@@ -37,6 +37,8 @@ class LocationsFragment : Fragment() {
     ): View {
         _binding = FragmentLocationsBinding.inflate(inflater, container, false)
 
+        binding.lifecycleOwner = this
+
         viewModel.locations.observe(viewLifecycleOwner) { locations: List<Location> ->
             binding.progressBar.visibility = View.INVISIBLE
             val adapter =

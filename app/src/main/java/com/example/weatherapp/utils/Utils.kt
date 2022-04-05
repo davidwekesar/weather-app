@@ -26,7 +26,7 @@ fun formatTempString(temperature: Int): String {
     return "$temperature\u00B0"
 }
 
-fun getIconResource(weatherIcon: Int?): Int {
+fun getWeatherImageResource(weatherIcon: Int?): Int {
     return if (weatherIcon != null) {
         when(weatherIcon) {
             in 1..3 -> R.drawable.ic_sunny_140

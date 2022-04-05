@@ -3,9 +3,10 @@ package com.example.weatherapp.repository
 import com.example.weatherapp.database.LocationsDatabase
 import com.example.weatherapp.database.asDomainModel
 import com.example.weatherapp.domain.Location
-import com.example.weatherapp.network.datatransferobjects.NetworkLocationDetails
+import com.example.weatherapp.domain.LocationDetails
 import com.example.weatherapp.network.AccuWeather
 import com.example.weatherapp.network.datatransferobjects.asDatabaseModel
+import com.example.weatherapp.network.datatransferobjects.asDomainModel
 import com.example.weatherapp.network.datatransferobjects.asSubDatabaseModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -41,8 +42,8 @@ class LocationsRepository(private val database: LocationsDatabase) {
         }
     }
 
-    suspend fun fetchLocationWeatherData(locationKey: String): List<NetworkLocationDetails> =
-        AccuWeather.accuWeatherService.fetchLocationData(locationKey)
+    suspend fun fetchLocationDetails(locationKey: String): List<LocationDetails> =
+        AccuWeather.accuWeatherService.fetchLocationDetails(locationKey).asDomainModel()
 
     suspend fun updateLocation(isFavorite: Boolean, locationKey: String): Int =
         database.locationDao.updateLocation(isFavorite, locationKey)

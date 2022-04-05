@@ -26,7 +26,7 @@ interface AccuWeatherService {
     suspend fun fetchLocationsList(): List<NetworkLocation>
 
     @GET("currentconditions/v1/{locationKey}?apikey=${BuildConfig.API_KEY}&details=true")
-    suspend fun fetchLocationData(@Path("locationKey") locationKey: String): List<NetworkLocationDetails>
+    suspend fun fetchLocationDetails(@Path("locationKey") locationKey: String): List<NetworkLocationDetails>
 }
 
 object AccuWeather {

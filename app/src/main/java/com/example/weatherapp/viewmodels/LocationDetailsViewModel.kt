@@ -1,7 +1,7 @@
 package com.example.weatherapp.viewmodels
 
 import androidx.lifecycle.*
-import com.example.weatherapp.network.datatransferobjects.NetworkLocationDetails
+import com.example.weatherapp.domain.LocationDetails
 import com.example.weatherapp.repository.LocationsRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -11,17 +11,17 @@ class LocationDetailsViewModel(
     private val repository: LocationsRepository
 ) : ViewModel() {
 
-    private val _locationData = MutableLiveData<List<NetworkLocationDetails>>()
-    val networkLocationDetails: LiveData<List<NetworkLocationDetails>> get() = _locationData
+    private val _locationData = MutableLiveData<List<LocationDetails>>()
+    val locationDetails: LiveData<List<LocationDetails>> get() = _locationData
 
     init {
-        fetchLocationWeatherData()
+        fetchLocationDetails()
     }
 
-    private fun fetchLocationWeatherData() {
+    private fun fetchLocationDetails() {
         viewModelScope.launch {
             try {
-                _locationData.value = repository.fetchLocationWeatherData(locationKey)
+                _locationData.value = repository.fetchLocationDetails(locationKey)
                 Timber.d("onFetchLocationWeatherData: Success!")
             } catch (e: Exception) {
                 Timber.e(e, "onFetchLocationWeatherData: Failure")

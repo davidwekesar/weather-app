@@ -2,15 +2,9 @@ package com.example.weatherapp.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.weatherapp.R
 import com.example.weatherapp.databinding.ListItemLocationBinding
 import com.example.weatherapp.domain.Location
-import com.example.weatherapp.utils.*
 import com.example.weatherapp.viewmodels.LocationsViewModel
 
 class LocationAdapter(
@@ -30,59 +24,19 @@ class LocationAdapter(
 
     override fun onBindViewHolder(holder: LocationViewHolder, position: Int) {
         val location = locations[position]
-        holder.bind(location, clickListener)
-        holder.favoriteButton.setOnClickListener {
-            with(location) {
-                isFavorite = if (!isFavorite) {
-                    holder.favoriteButton.setImageResource(R.drawable.ic_favorite_24)
-                    true
-                } else {
-                    holder.favoriteButton.setImageResource(R.drawable.ic_favorite_border_24)
-                    false
-                }
-                viewModel.updateLocation(
-                    isFavorite = isFavorite,
-                    locationKey = locationKey
-                )
-            }
-        }
-
-        if (location.isFavorite) {
-            holder.favoriteButton.setImageResource(R.drawable.ic_favorite_24)
-        } else {
-            holder.favoriteButton.setImageResource(R.drawable.ic_favorite_border_24)
-        }
+        holder.bind(location, viewModel, clickListener)
     }
 
     override fun getItemCount(): Int = locations.size
 }
 
-class LocationViewHolder(binding: ListItemLocationBinding) : RecyclerView.ViewHolder(binding.root) {
-
-    private val cardView: CardView = binding.cardView
-    private val cityTV: TextView = binding.city
-    private val countryTV: TextView = binding.country
-    private val dateTV: TextView = binding.date
-    private val timeTV: TextView = binding.time
-    private val temperatureTV: TextView = binding.temperature
-    private val weatherImageView: ImageView = binding.weatherIcon
-    val favoriteButton: ImageButton = binding.favoriteButton
-
-    fun bind(location: Location, clickListener: LocationListener) {
-        with(location) {
-            cardView.setOnClickListener {
-                clickListener.onClick(
-                    locationKey,
-                    concatLocationName(city, country)
-                )
-            }
-            cityTV.text = city
-            countryTV.text = country
-            temperatureTV.text = formatTempString(temperature)
-            dateTV.text = convertToDate(epochTime)
-            timeTV.text = convertToTime(epochTime)
-            weatherImageView.setImageResource(getIconResource(weatherIcon))
-        }
+class LocationViewHolder(private val binding: ListItemLocationBinding) :
+    RecyclerView.ViewHolder(binding.root) {
+    fun bind(location: Location, viewModel: LocationsViewModel, clickListener: LocationListener) {
+        binding.location = location
+        binding.locationListener = clickListener
+        binding.viewModel = viewModel
+        binding.executePendingBindings()
     }
 }
 
