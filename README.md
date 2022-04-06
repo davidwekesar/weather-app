@@ -5,6 +5,7 @@ A weather application that displays the current weather.
 * Architecture
   * MVVM (Model-View-ViewModel)
   * Repository pattern
+  * Single-Activity pattern
 * Architecture components
   * [WorkManager](https://developer.android.com/topic/libraries/architecture/workmanager) - Schedule background work that's deferrable and requires guaranteed execution.
   * [Lifecycles](https://developer.android.com/topic/libraries/architecture/lifecycle) - Create a UI that automatically responds to lifecycle events.
