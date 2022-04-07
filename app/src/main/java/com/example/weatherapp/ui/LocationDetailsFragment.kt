@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.weatherapp.R
 import com.example.weatherapp.database.getDatabase
 import com.example.weatherapp.databinding.FragmentLocationDetailsBinding
+import com.example.weatherapp.network.AccuWeatherApiStatus
 import com.example.weatherapp.repository.LocationsRepository
 import com.example.weatherapp.viewmodels.LocationDetailsViewModel
 import com.example.weatherapp.viewmodels.LocationDetailsViewModelFactory
@@ -38,6 +39,7 @@ class LocationDetailsFragment : Fragment() {
 
         binding.city = args.city
         binding.country = args.country
+        binding.viewModel = viewModel
 
         viewModel.locationDetails.observe(viewLifecycleOwner) { locationDetailsList ->
             binding.loadingState.visibility = View.INVISIBLE

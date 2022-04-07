@@ -1,11 +1,13 @@
 package com.example.weatherapp.utils
 
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.example.weatherapp.R
-import com.example.weatherapp.domain.Location
+import com.example.weatherapp.network.AccuWeatherApiStatus
 
 @BindingAdapter("app:srcCompat")
 fun setWeatherImage(imageView: ImageView, weatherIcon: Int) {
@@ -28,5 +30,23 @@ fun setFavoriteButtonState(imageButton: ImageButton, isFavorite: Boolean) {
         imageButton.setImageResource(R.drawable.ic_favorite_24)
     } else {
         imageButton.setImageResource(R.drawable.ic_favorite_border_24)
+    }
+}
+
+@BindingAdapter("loadStateVisibility")
+fun setLoadStateVisibility(viewGroup: ViewGroup, apiStatus: AccuWeatherApiStatus) {
+    when (apiStatus) {
+        AccuWeatherApiStatus.LOADING -> viewGroup.visibility = View.VISIBLE
+        AccuWeatherApiStatus.DONE -> viewGroup.visibility = View.INVISIBLE
+        AccuWeatherApiStatus.ERROR -> viewGroup.visibility = View.INVISIBLE
+    }
+}
+
+@BindingAdapter("errorStateVisibility")
+fun setErrorStateVisibility(viewGroup: ViewGroup, apiStatus: AccuWeatherApiStatus) {
+    when (apiStatus) {
+        AccuWeatherApiStatus.LOADING -> viewGroup.visibility = View.INVISIBLE
+        AccuWeatherApiStatus.DONE -> viewGroup.visibility = View.INVISIBLE
+        AccuWeatherApiStatus.ERROR -> viewGroup.visibility = View.VISIBLE
     }
 }

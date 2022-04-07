@@ -8,7 +8,7 @@
         <variable
             name="city"
             type="String" />
-        
+
         <variable
             name="country"
             type="String" />
@@ -16,6 +16,10 @@
         <variable
             name="locationDetails"
             type="com.example.weatherapp.domain.LocationDetails" />
+
+        <variable
+            name="viewModel"
+            type="com.example.weatherapp.viewmodels.LocationDetailsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,10 +39,10 @@
             android:id="@+id/locationName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{@string/location_name_format(city, country)}"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:textColor="?attr/colorPrimaryVariant"
             android:textStyle="bold"
-            android:text="@{@string/location_name_format(city, country)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -47,21 +51,21 @@
         <ImageView
             android:id="@+id/weatherIcon"
             android:layout_width="wrap_content"
-            android:contentDescription="@string/weather_icon"
             android:layout_height="wrap_content"
-            app:srcCompat="@{locationDetails.weatherIcon}"
+            android:contentDescription="@string/weather_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/locationName"
+            app:srcCompat="@{locationDetails.weatherIcon}"
             tools:src="@drawable/ic_partly_sunny_140" />
 
         <TextView
             android:id="@+id/weather"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{locationDetails.weatherText}"
             android:textAppearance="?attr/textAppearanceSubtitle1"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="@{locationDetails.weatherText}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/weatherIcon"
             tools:text="Clear" />
@@ -70,10 +74,10 @@
             android:id="@+id/temperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{@string/alt_temperature_format(locationDetails.temperature)}"
             android:textAppearance="?attr/textAppearanceHeadline1"
             android:textColor="?attr/colorPrimaryVariant"
             android:textStyle="bold"
-            android:text="@{@string/alt_temperature_format(locationDetails.temperature)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/weather"
@@ -98,10 +102,10 @@
             android:id="@+id/windSpeed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{@string/wind_speed_format(locationDetails.wind)}"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:textColor="?attr/colorPrimaryVariant"
             android:textStyle="bold"
-            android:text="@{@string/wind_speed_format(locationDetails.wind)}"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -129,10 +133,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_large"
+            android:text="@{@string/humidity_format(locationDetails.humidity)}"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:textColor="?attr/colorPrimaryVariant"
             android:textStyle="bold"
-            android:text="@{@string/humidity_format(locationDetails.humidity)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -158,10 +162,10 @@
             android:id="@+id/visibility"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{@string/visibility_format(locationDetails.visibility)}"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:textColor="?attr/colorPrimaryVariant"
             android:textStyle="bold"
-            android:text="@{@string/visibility_format(locationDetails.visibility)}"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -189,10 +193,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_large"
+            android:text="@{@string/pressure_format(locationDetails.pressure)}"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:textColor="?attr/colorPrimaryVariant"
             android:textStyle="bold"
-            android:text="@{@string/pressure_format(locationDetails.pressure)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -218,10 +222,10 @@
             android:id="@+id/dewPoint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{@string/temperature_format(locationDetails.dewPoint)}"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:textColor="?attr/colorPrimaryVariant"
             android:textStyle="bold"
-            android:text="@{@string/temperature_format(locationDetails.dewPoint)}"
             app:layout_constraintEnd_toStartOf="@+id/guideline3"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -230,10 +234,10 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:contentDescription="@string/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_xlarge"
+            android:contentDescription="@string/date"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dewPoint"
@@ -248,18 +252,18 @@
             android:textAppearance="?attr/textAppearanceCaption"
             android:textColor="?attr/colorPrimaryVariant"
             android:textStyle="bold"
-            app:textDate="@{locationDetails.epochTime}"
             app:layout_constraintBottom_toBottomOf="@+id/imageView3"
             app:layout_constraintStart_toEndOf="@+id/imageView3"
             app:layout_constraintTop_toTopOf="@+id/imageView3"
+            app:textDate="@{locationDetails.epochTime}"
             tools:text="Tue, 22 Mar, 2022" />
 
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/time"
             android:layout_marginEnd="@dimen/default_small"
+            android:contentDescription="@string/time"
             app:layout_constraintBottom_toBottomOf="@+id/time"
             app:layout_constraintEnd_toStartOf="@+id/time"
             app:layout_constraintTop_toTopOf="@+id/time"
@@ -272,9 +276,9 @@
             android:textAppearance="?attr/textAppearanceCaption"
             android:textColor="?attr/colorPrimaryVariant"
             android:textStyle="bold"
-            app:textTime="@{locationDetails.epochTime}"
             app:layout_constraintBaseline_toBaselineOf="@+id/date"
             app:layout_constraintEnd_toEndOf="parent"
+            app:textTime="@{locationDetails.epochTime}"
             tools:text="3:18 AM" />
 
         <RelativeLayout
@@ -285,7 +289,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:loadStateVisibility="@{viewModel.apiStatus}">
 
             <ProgressBar
                 android:id="@+id/progressBar2"
@@ -293,6 +298,46 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/errorState"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/background_color"
+            app:errorStateVisibility="@{viewModel.apiStatus}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/errorImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:contentDescription="@string/error_image"
+                app:srcCompat="@drawable/ic_error_160" />
+
+            <TextView
+                android:id="@+id/errorTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/errorImage"
+                android:layout_centerHorizontal="true"
+                android:text="@string/network_error"
+                android:textAppearance="?attr/textAppearanceSubtitle1"
+                android:textColor="?attr/colorPrimaryVariant"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/errorTitle"
+                android:layout_centerHorizontal="true"
+                android:text="@string/unable_to_get_details"
+                android:textAppearance="?attr/textAppearanceSubtitle2"
+                android:textColor="?attr/colorPrimaryVariant" />
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

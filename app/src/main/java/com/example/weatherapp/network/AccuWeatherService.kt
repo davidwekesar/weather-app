@@ -29,6 +29,8 @@ interface AccuWeatherService {
     suspend fun fetchLocationDetails(@Path("locationKey") locationKey: String): List<NetworkLocationDetails>
 }
 
+enum class AccuWeatherApiStatus {LOADING, DONE, ERROR}
+
 object AccuWeather {
     val accuWeatherService: AccuWeatherService by lazy {
         retrofit.create(AccuWeatherService::class.java)

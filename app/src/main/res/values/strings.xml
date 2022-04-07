@@ -27,4 +27,7 @@
     <string name="weather_icon">Weather Icon</string>
     <string name="time_icon">Time Icon</string>
     <string name="date_icon">Date Icon</string>
+    <string name="network_error">Network Error</string>
+    <string name="unable_to_get_details">Unable to get location details</string>
+    <string name="error_image">Error image</string>
 </resources>
