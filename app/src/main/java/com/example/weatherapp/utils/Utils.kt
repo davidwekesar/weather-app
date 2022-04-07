@@ -6,12 +6,18 @@ import java.util.*
 
 private const val MILLIS_IN_A_SECOND = 1_000
 
+/**
+ * Converts epoch time to the date format pattern: Thur, 7 Apr, 2022
+ */
 fun convertToDate(epochTime: Long): String {
     val date = Date(epochTime * MILLIS_IN_A_SECOND)
     val simpleDateFormat = SimpleDateFormat("EEE, d MMM, yyyy", Locale.getDefault())
     return simpleDateFormat.format(date)
 }
 
+/**
+ * Converts epoch time to the time format pattern: 1:22 p.m.
+ */
 fun convertToTime(epochTime: Long): String {
     val date = Date(epochTime * MILLIS_IN_A_SECOND)
     val simpleDateFormat = SimpleDateFormat("h:mm aaa", Locale.getDefault())
