@@ -24,6 +24,9 @@ fun convertToTime(epochTime: Long): String {
     return simpleDateFormat.format(date)
 }
 
+/**
+ * Returns a drawable resource value based on the weatherIcon argument.
+ */
 fun getWeatherImageResource(weatherIcon: Int?): Int {
     return if (weatherIcon != null) {
         when(weatherIcon) {
