@@ -20,6 +20,11 @@ A weather application that displays the current weather.
   * [Ktlint](https://github.com/JakeWharton/timber) - a static code analysis tool that is used to analyze the Kotlin code.
  * API
    * Uses [AccuWeather APIs](https://developer.accuweather.com/) to get weather data.
+ 
+<div>
+ <img src="screenshots/summary.png">
+</div>
+
  ## Download
  Go to the [Releases](https://github.com/davidwekesar/weather-app/releases) to download the latest APK.
  ## Attribution
