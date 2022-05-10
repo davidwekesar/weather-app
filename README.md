@@ -1,4 +1,4 @@
-# Weather App - TopUp Mama mobile assessment.
+# Weather App.
 A weather application that displays the current weather.
 
 ## Tech stack and Libraries
