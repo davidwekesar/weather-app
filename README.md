@@ -12,8 +12,9 @@ A weather application that displays the current weather.
   * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata) - Build data objects that notify views when the underlying database changes.
   * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Store UI-related data that isn't destroyed on app rotations. Easily schedule asynchronous tasks for optimal execution.
 * Third party libraries 
-  * [Retrofit](https://square.github.io/retrofit/) - a type-safe REST client for Android
+  * [Retrofit](https://square.github.io/retrofit/) - a type-safe REST client for Android.
   * [Moshi](https://github.com/square/moshi) - for parsing JSON into Java objects.
+  * [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - a dependency injection library for Android.
   * [Room](https://github.com/square/moshi) - for persisting data locally.
   * [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) - for managing background threads with simplified code and reducing needs for callbacks.
   * [Timber](https://github.com/JakeWharton/timber) - a logging library for Android
