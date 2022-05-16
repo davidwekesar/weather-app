@@ -9,22 +9,26 @@ import androidx.core.content.ContextCompat
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.example.weatherapp.R
-import com.example.weatherapp.database.getDatabase
+import com.example.weatherapp.database.LocationDao
 import com.example.weatherapp.repository.LocationsRepository
 import com.example.weatherapp.utils.sendNotification
 import retrofit2.HttpException
 import timber.log.Timber
+import javax.inject.Inject
 
-class RefreshDataWorker(appContext: Context, params: WorkerParameters) :
+class RefreshDataWorker (
+    appContext: Context,
+    params: WorkerParameters) :
     CoroutineWorker(appContext, params) {
+
+    @Inject lateinit var locationDao: LocationDao
 
     companion object {
         const val WORK_NAME = "com.example.weatherapp.work.RefreshDataWorker"
     }
 
     override suspend fun doWork(): Result {
-        val database = getDatabase(applicationContext)
-        val repository = LocationsRepository(database)
+        val repository = LocationsRepository(locationDao)
         val notificationManager = ContextCompat.getSystemService(
             applicationContext,
             NotificationManager::class.java

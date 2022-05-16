@@ -3,32 +3,25 @@ package com.example.weatherapp.ui
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapp.R
 import com.example.weatherapp.databinding.FragmentLocationsBinding
 import com.example.weatherapp.domain.Location
-import com.example.weatherapp.viewmodels.LocationsViewModel
-import com.example.weatherapp.viewmodels.LocationsViewModelFactory
 import com.example.weatherapp.ui.adapters.LocationAdapter
 import com.example.weatherapp.ui.adapters.LocationListener
-import com.google.android.material.appbar.AppBarLayout
-import timber.log.Timber
+import com.example.weatherapp.viewmodels.LocationsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LocationsFragment : Fragment() {
 
     private var _binding: FragmentLocationsBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: LocationsViewModel by viewModels {
-        LocationsViewModelFactory(requireActivity().application)
-    }
+    private val viewModel: LocationsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

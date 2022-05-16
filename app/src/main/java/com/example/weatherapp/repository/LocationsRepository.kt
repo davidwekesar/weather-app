@@ -1,5 +1,6 @@
 package com.example.weatherapp.repository
 
+import com.example.weatherapp.database.LocationDao
 import com.example.weatherapp.database.LocationsDatabase
 import com.example.weatherapp.database.asDomainModel
 import com.example.weatherapp.domain.Location
@@ -11,34 +12,35 @@ import com.example.weatherapp.network.datatransferobjects.asSubDatabaseModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import timber.log.Timber
+import javax.inject.Inject
 
-class LocationsRepository(private val database: LocationsDatabase) {
+class LocationsRepository @Inject constructor(private val locationDao: LocationDao) {
 
     suspend fun getAllLocations(): List<Location> =
-        database.locationDao.getAllLocations().asDomainModel()
+        locationDao.getAllLocations().asDomainModel()
 
     suspend fun searchLocation(query: String): List<Location> =
-        database.locationDao.search(query).asDomainModel()
+        locationDao.search(query).asDomainModel()
 
     suspend fun refreshLocationsList() {
         withContext(Dispatchers.IO) {
             val locations = AccuWeather.accuWeatherService.fetchLocationsList()
             Timber.d("refreshLocationsList: Success!")
-            if (database.locationDao.getAllLocations().isNotEmpty()) {
+            if (locationDao.getAllLocations().isNotEmpty()) {
                 Timber.d("refreshLocationList: Update")
-                database.locationDao.updateList(locations.asSubDatabaseModel())
+                locationDao.updateList(locations.asSubDatabaseModel())
             } else {
                 Timber.d("refreshLocationList: Refresh")
-                database.locationDao.insertAll(locations.asDatabaseModel())
+                locationDao.insertAll(locations.asDatabaseModel())
             }
         }
     }
 
     suspend fun getFavoriteLocation(): Location {
-        return if (database.locationDao.getFavoriteLocation() != null) {
-            database.locationDao.getFavoriteLocation()!!.asDomainModel()
+        return if (locationDao.getFavoriteLocation() != null) {
+            locationDao.getFavoriteLocation()!!.asDomainModel()
         } else {
-            database.locationDao.getLocation().asDomainModel()
+            locationDao.getLocation().asDomainModel()
         }
     }
 
@@ -46,5 +48,5 @@ class LocationsRepository(private val database: LocationsDatabase) {
         AccuWeather.accuWeatherService.fetchLocationDetails(locationKey).asDomainModel()
 
     suspend fun updateLocation(isFavorite: Boolean, locationKey: String): Int =
-        database.locationDao.updateLocation(isFavorite, locationKey)
+        locationDao.updateLocation(isFavorite, locationKey)
 }
