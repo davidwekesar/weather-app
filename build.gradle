@@ -9,6 +9,7 @@ buildscript {
         hilt_version = "2.42"
         room_version = "2.4.2"
         work_version = "2.7.1"
+        hilt_androidx_version = "1.0.0"
     }
 
     dependencies {

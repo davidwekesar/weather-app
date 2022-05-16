@@ -4,12 +4,15 @@ import androidx.lifecycle.*
 import com.example.weatherapp.domain.LocationDetails
 import com.example.weatherapp.network.AccuWeatherApiStatus
 import com.example.weatherapp.repository.LocationsRepository
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class LocationDetailsViewModel(
-    private val locationKey: String,
-    private val repository: LocationsRepository
+class LocationDetailsViewModel @AssistedInject constructor(
+    private val repository: LocationsRepository,
+    @Assisted private val locationKey: String,
 ) : ViewModel() {
 
     private val _apiStatus = MutableLiveData<AccuWeatherApiStatus>()
@@ -19,10 +22,10 @@ class LocationDetailsViewModel(
     val locationDetails: LiveData<List<LocationDetails>> get() = _locationData
 
     init {
-        fetchLocationDetails()
+        fetchLocationDetails(locationKey)
     }
 
-    private fun fetchLocationDetails() {
+    private fun fetchLocationDetails(locationKey: String) {
         viewModelScope.launch {
             try {
                 _apiStatus.value = AccuWeatherApiStatus.LOADING
@@ -35,18 +38,23 @@ class LocationDetailsViewModel(
             }
         }
     }
+
+    companion object {
+
+        fun providesFactory(
+            assistedFactory: LocationDetailsViewModelFactory,
+            locationKey: String
+        ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
+
+            @Suppress("UNCHECKED_CAST", "WRONG_NULLABILITY_FOR_JAVA_OVERRIDE")
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                return assistedFactory.create(locationKey) as T
+            }
+        }
+    }
 }
 
-class LocationDetailsViewModelFactory(
-    private val locationKey: String,
-    private val repository: LocationsRepository
-) : ViewModelProvider.Factory {
-    @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(LocationDetailsViewModel::class.java)) {
-            return LocationDetailsViewModel(locationKey, repository) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
-    }
-
+@AssistedFactory
+interface LocationDetailsViewModelFactory {
+    fun create(locationKey: String): LocationDetailsViewModel
 }

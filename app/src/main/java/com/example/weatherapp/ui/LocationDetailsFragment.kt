@@ -9,23 +9,24 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.weatherapp.R
-import com.example.weatherapp.database.getDatabase
 import com.example.weatherapp.databinding.FragmentLocationDetailsBinding
-import com.example.weatherapp.network.AccuWeatherApiStatus
-import com.example.weatherapp.repository.LocationsRepository
 import com.example.weatherapp.viewmodels.LocationDetailsViewModel
 import com.example.weatherapp.viewmodels.LocationDetailsViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class LocationDetailsFragment : Fragment() {
 
     private var _binding: FragmentLocationDetailsBinding? = null
     private val binding get() = _binding!!
     private val args: LocationDetailsFragmentArgs by navArgs()
-    private val repository: LocationsRepository by lazy {
-        LocationsRepository(getDatabase(requireActivity().application))
-    }
+    @Inject lateinit var locationDetailsViewModelFactory: LocationDetailsViewModelFactory
     private val viewModel: LocationDetailsViewModel by viewModels {
-        LocationDetailsViewModelFactory(args.locationKey, repository)
+        LocationDetailsViewModel.providesFactory(
+            assistedFactory = locationDetailsViewModelFactory,
+            locationKey = args.locationKey
+        )
     }
 
     override fun onCreateView(
@@ -37,8 +38,11 @@ class LocationDetailsFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
-        binding.city = args.city
-        binding.country = args.country
+        with(args) {
+            binding.city = city
+            binding.country = country
+        }
+
         binding.viewModel = viewModel
 
         viewModel.locationDetails.observe(viewLifecycleOwner) { locationDetailsList ->

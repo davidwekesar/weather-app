@@ -1,20 +1,23 @@
 package com.example.weatherapp.viewmodels
 
 import android.app.Application
-import android.text.Editable
-import androidx.lifecycle.*
-import androidx.work.WorkInfo
-import com.example.weatherapp.database.getDatabase
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.weatherapp.domain.Location
 import com.example.weatherapp.repository.LocationsRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
-class LocationsViewModel(
-    application: Application
+@HiltViewModel
+class LocationsViewModel @Inject constructor(
+    application: Application,
+    private val repository: LocationsRepository
 ) : AndroidViewModel(application) {
-
-    private val repository = LocationsRepository(getDatabase(application))
 
     private var _locations = MutableLiveData<List<Location>>()
     val locations: LiveData<List<Location>> get() = _locations
@@ -50,10 +53,8 @@ class LocationsViewModel(
     private fun getAllLocations() {
         viewModelScope.launch {
             try {
-                _locations.value = if (repository.getAllLocations().isNullOrEmpty()) {
+                _locations.value = repository.getAllLocations().ifEmpty {
                     repository.refreshLocationsList()
-                    repository.getAllLocations()
-                } else {
                     repository.getAllLocations()
                 }
                 Timber.d("fetchAllLocations:success")
@@ -61,17 +62,5 @@ class LocationsViewModel(
                 Timber.e(e, "fetchAllLocations:failure")
             }
         }
-    }
-}
-
-class LocationsViewModelFactory(
-    private val application: Application
-) : ViewModelProvider.Factory {
-    @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(LocationsViewModel::class.java)) {
-            return LocationsViewModel(application) as T
-        }
-        throw IllegalArgumentException("Unable to construct ViewModel")
     }
 }
